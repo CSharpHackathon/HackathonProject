@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 
 namespace Person
@@ -15,7 +16,26 @@ namespace Person
             Spider Spider1 = new Spider("Spider1");
             Human[] allies = {Champloo,Skeletor,Gotou};
             Enemy[] enemies = {Zombie1,Zombie2,Spider1};
-            encounter(allies, enemies);
+            encounter(allies, encountermake());
+        }
+        static Enemy[] encountermake(){
+            Random rand = new Random();
+            int choice = rand.Next(0,2);
+            switch(choice){
+                case 0: 
+                    Zombie Zombie1 = new Zombie("Zombie1");
+                    Zombie Zombie2 = new Zombie("Zombie2");
+                    Spider Spider1 = new Spider("Spider1");
+                    Enemy[] en1 = new Enemy[]{Zombie1,Zombie2,Spider1};
+                    return en1;
+                case 1:
+                    Spider Spider2 = new Spider("Spider1");
+                    Spider Spider3 = new Spider("Spider2");
+                    Enemy[] en2 = new Enemy[]{Spider2,Spider3};
+                    return en2;
+                default: 
+                    return null;
+            }    
         }
         static void encounter(Human[] allies,Enemy[] enemies){
             Random rand = new Random();
